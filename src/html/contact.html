@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="../style/style.css" />
+    <title>Star Wars Shop</title>
+  </head>
+  <body>
+    <header>
+        <nav class="navbar">
+          <div class="logo">
+            <a href="#">
+              <img src="/assets/pngegg.png" alt="vader_logo" />
+            </a>
+          </div>
+          <div class="sw-menu">
+            <span class="line"></span>
+            <span class="line"></span>
+            <span class="line"></span>
+          </div>
+          <div class="nav-menu hide">
+            <a href="/src/html/index.html">Home</a>
+            <a href="/src/html/shop.html">Shop</a>
+            <a href="/src/html/contact.html">Contact</a>
+          </div>
+        </nav>
+      </header>
+    <main>
+        <h1 class="h1">Kontakt</h1>
+      <section class="form-container">
+        <section class="form">
+          <form action="#" method="post">
+            <input
+              type="text"
+              name="name"
+              id="name"
+              placeholder="Name..."
+              required
+              maxlength="25"
+            />
+            <br />
+            <input
+              type="email"
+              name="email"
+              id="email"
+              placeholder="Gültige E-mail..."
+              required
+            />
+            <br />
+            <input
+              type="tel"
+              name="telefonnumber"
+              id="telefon"
+              placeholder="Handynummer..."
+              maxlength="11"
+            />
+            <br />
+            <input
+              type="textarea"
+              name="textarea"
+              id="textarea"
+              placeholder="Betreff..."
+              required
+            />
+            <br />
+            <textarea
+              type="textarea"
+              name="textarea"
+              id="textarea"
+              placeholder="Nachricht..."
+              wrap="soft"
+              required
+            ></textarea>
+            <br />
+            <input
+              class="btn btn-submit"
+              type="submit"
+              value="Nachricht senden"
+              href="#"
+            />
+            <!-- <label for="textarea"></label> -->
+          </form>
+    </main>
+
+    <script src="../scripts/index.js"></script>
+  </body>
+</html>
