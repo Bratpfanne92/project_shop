@@ -63,7 +63,7 @@ a {
 }
 
 .nav-menu {
-  position: fixed;
+  position: absolute;
   width: 65%;
   top: 5rem;
   left: 25%;
