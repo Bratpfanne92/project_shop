@@ -1,3 +1,6 @@
+// window.addEventListener("load", () => {
+
+//navbar toggle
 const swMenu = document.querySelector(".sw-menu");
 const navMenu = document.querySelector(".nav-menu");
 
