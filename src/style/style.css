@@ -19,7 +19,7 @@ body {
 
 header {
   height: 300px;
-  background: url(/assets/anakin-skywalker-movies-obi-wan-kenobi-padme-amidala-wallpaper-preview.jpg)
+  background: url("/assets/anakin-skywalker-movies-obi-wan-kenobi-padme-amidala-wallpaper-preview.jpg")
     no-repeat center center/contain black;
 }
 
