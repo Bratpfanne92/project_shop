@@ -163,6 +163,14 @@ main {
   transition: 0.5s;
 }
 /* cart */
+.cart-menü {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  /* margin: 1rem; */
+  background-color: #ffffff;
+}
+
 .cart {
   position: fixed;
   z-index: 1;
