@@ -37,6 +37,20 @@ function ready() {
     let button = removeCartItemButtons[i];
     button.addEventListener("click", removeCartItem); //onclick removeCartItem function
   }
+  //quantity input
+  let quantityInputs = document.getElementsByClassName("cart-quantity");
+  for (let i = 0; i < quantityInputs.length; i++) {
+    let quantityInput = quantityInputs[i];
+    quantityInput.addEventListener("change", quantityChanged); // quantityChanged function wird ausgeführt wenn quantity input geändert wird
+  }
+}
+//quantityChanged function
+function quantityChanged(e) {
+  const input = e.target;
+  if (isNaN(input.value) || input.value <= 0) {
+    input.value = 1; //wenn input value nicht number oder kleiner gleich 0, dann 1
+  }
+  updateCartTotal(); //update cart total function,wenn quantity input geändert wird
 }
 
 //removeCartItem function
