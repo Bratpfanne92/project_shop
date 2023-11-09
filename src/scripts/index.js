@@ -53,16 +53,22 @@ function ready() {
   }
 }
 //addToCartClicked function
+let selectedProduct = {};
 function addToCartClicked(e) {
-  const button = e.target;
-  const productsImShop = button.parentElement; //parent von button ist .product-box
-  const title =
+  let button = e.target;
+  let productsImShop = button.parentElement; //parent von button ist .product-box
+  let title =
     productsImShop.getElementsByClassName("product-title")[0].innerText;
 
-  const price = productsImShop.getElementsByClassName("price")[0].innerText;
-  const productsImShopImg =
+  let price = productsImShop.getElementsByClassName("price")[0].innerText;
+  let productsImShopImg =
     productsImShop.getElementsByClassName("product-img")[0].src; //src von img
-  addProductToCart(title, price, productsImShopImg); //addProductToCart function-definieren soll unten
+  selectedProduct = {
+    title: title,
+    price: price,
+    productsImShopImg: productsImShopImg,
+  };
+  addProductToCart(selectedProduct); //addProductToCart function-definieren soll unten
   updateCartTotal(); //update cart total function,wenn add to cart button geklickt wird
 }
 
@@ -78,15 +84,16 @@ function addProductToCart(title, price, productsImShopImg) {
     return; //wennn cart item name im cart ist, dann return und nichts machen
   }
 }
+
 //cartBox html-erstellen- copy von html to js in cartBoxContent
 const cartBoxContent = ` <img
-src="${productsImShopImg}"
+src="${selectedProduct.productsImShopImg}"
 alt=""
 class="cart-img"
 />
 <div class="detail-box">
-<div class="cart-product-title">${title}</div>
-<div class="cart-product-price">${price}</div>
+<div class="cart-product-title">${selectedProduct.title}</div>
+<div class="cart-product-price">${selectedProduct.price}</div>
 <input type="number" value="1" class="cart-quantity" />
 </div>
 <!-- remove cart -trash button-->
