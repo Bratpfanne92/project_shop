@@ -177,7 +177,7 @@ main {
   transition: 0.4s;
   top: 0;
   /* -100% wenn js fertig */
-  right: 0;
+  right: -100%;
   width: 350px;
   min-height: 100vh;
   padding: 20px;

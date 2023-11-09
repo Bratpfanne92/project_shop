@@ -52,15 +52,15 @@ function ready() {
     button.addEventListener("click", addToCartClicked);
   }
 }
-//addToCartClicked functio
+//addToCartClicked function
 function addToCartClicked(e) {
-  let button = e.target;
-  let productsImShop = button.parentElement; //parent von button ist .product-box
-  let title =
+  const button = e.target;
+  const productsImShop = button.parentElement; //parent von button ist .product-box
+  const title =
     productsImShop.getElementsByClassName("product-title")[0].innerText;
 
-  let price = productsImShop.getElementsByClassName("price")[0].innerText;
-  let productsImShopImg =
+  const price = productsImShop.getElementsByClassName("price")[0].innerText;
+  const productsImShopImg =
     productsImShop.getElementsByClassName("product-img")[0].src; //src von img
   addProductToCart(title, price, productsImShopImg); //addProductToCart function-definieren soll unten
   updateCartTotal(); //update cart total function,wenn add to cart button geklickt wird
