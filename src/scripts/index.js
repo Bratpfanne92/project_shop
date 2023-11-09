@@ -72,8 +72,11 @@ function updateCartTotal() {
       cartBox.getElementsByClassName("cart-quantity")[0];
     let price = parseFloat(cartProductPrice.innerText.replace("€", ""));
     let quantity = cartProductQuantity.value;
+    //anfangswert für total
     let total = 0;
     total = total + quantity * price;
+    //wenn hat decimal im price dann round to 2 decimal
+    total = Math.round(total * 100) / 100;
 
     document.getElementsByClassName("total-price")[0].innerText = total + "€"; //oder total + €
   }
