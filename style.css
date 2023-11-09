@@ -82,7 +82,7 @@ a {
   border-radius: 5px;
   color: black;
 }
-
+/* verstecken beim activ mobil page */
 .hide {
   display: none;
 }
