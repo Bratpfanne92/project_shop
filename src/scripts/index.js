@@ -31,7 +31,7 @@ if (document.readyState == "loading") {
 function ready() {
   //remove button-.cart remove-trash icon
   let removeCartItemButtons = document.getElementsByClassName("cart-remove");
-  console.log(removeCartItemButtons);
+  // console.log(removeCartItemButtons);
   // for loop für trash button bei JEDE cart item
   for (let i = 0; i < removeCartItemButtons.length; i++) {
     let button = removeCartItemButtons[i];
@@ -43,7 +43,66 @@ function ready() {
     let quantityInput = quantityInputs[i];
     quantityInput.addEventListener("change", quantityChanged); // quantityChanged function wird ausgeführt wenn quantity input geändert wird
   }
+  //add to cart button
+  let addToCartButtons = document.getElementsByClassName("add-cart");
+  // for loop für add to cart button bei JEDE product
+  for (let i = 0; i < addToCartButtons.length; i++) {
+    let button = addToCartButtons[i];
+    //wenn button geklickt wird, dann addToCartClicked function läuft ab
+    button.addEventListener("click", addToCartClicked);
+  }
 }
+//addToCartClicked functio
+function addToCartClicked(e) {
+  let button = e.target;
+  let productsImShop = button.parentElement; //parent von button ist .product-box
+  let title =
+    productsImShop.getElementsByClassName("product-title")[0].innerText;
+
+  let price = productsImShop.getElementsByClassName("price")[0].innerText;
+  let productsImShopImg =
+    productsImShop.getElementsByClassName("product-img")[0].src; //src von img
+  addProductToCart(title, price, productsImShopImg); //addProductToCart function-definieren soll unten
+  updateCartTotal(); //update cart total function,wenn add to cart button geklickt wird
+}
+
+//addProductToCart function
+function addProductToCart(title, price, productsImShopImg) {
+  let cartBox = document.createElement("div"); //div erstellen für cart
+  cartBox.classList.add("cart-box"); //class für div erstellen
+  let cartItems = document.getElementsByClassName("cart-content")[0];
+  let cartItemNames = cartItems.getElementsByClassName("cart-product-title");
+  //wennn cart item name im cart ist, dann alert- diese artikel ist schon im warenkorb
+  for (let i = 0; i < cartItemNames.length; i++) {
+    alert("Diese Artikel ist schon bereits im Warenkorb gelegt ");
+    return; //wennn cart item name im cart ist, dann return und nichts machen
+  }
+}
+//cartBox html-erstellen- copy von html to js in cartBoxContent
+const cartBoxContent = ` <img
+src="${productsImShopImg}"
+alt=""
+class="cart-img"
+/>
+<div class="detail-box">
+<div class="cart-product-title">${title}</div>
+<div class="cart-product-price">${price}</div>
+<input type="number" value="1" class="cart-quantity" />
+</div>
+<!-- remove cart -trash button-->
+<img
+src="assets/icons8-trash-windows-11-outline-32.png"
+alt=""
+class="cart-remove"
+/>`;
+cartBox.innerHTML = cartBoxContent; //cartBoxContent in cartBox in html einfügen
+cartItems.append(cartBox); //
+cartBox
+  .getElementsByClassName("cart-remove")[0]
+  .addEventListener("click", removeCartItem); //onclick removeCartItem function
+cartBox
+  .getElementsByClassName("cart-quantity")[0]
+  .addEventListener("change", quantityChanged);
 //quantityChanged function
 function quantityChanged(e) {
   const input = e.target;
