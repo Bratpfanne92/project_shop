@@ -47,8 +47,10 @@ function ready() {
 //quantityChanged function
 function quantityChanged(e) {
   const input = e.target;
-  if (isNaN(input.value) || input.value <= 0) {
-    input.value = 1; //wenn input value nicht number oder kleiner gleich 0, dann 1
+  let inputValue = input.value;
+  inputValue = parseInt(inputValue);
+  if (isNaN(inputValue) || inputValue <= 0) {
+    inputValue = 1; //wenn input value nicht number oder kleiner gleich 0, dann 1--ausschließen negative value
   }
   updateCartTotal(); //update cart total function,wenn quantity input geändert wird
 }
@@ -71,6 +73,7 @@ function updateCartTotal() {
       cartBox.getElementsByClassName("cart-quantity")[0];
     let price = parseFloat(cartProductPrice.innerText.replace("€", ""));
     let quantity = cartProductQuantity.value;
+    let total = 0;
     total = total + quantity * price;
 
     document.getElementsByClassName("total-price")[0].innerText = total + "€"; //oder total + €
