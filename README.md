@@ -2,6 +2,26 @@
 
 # shop project
 
-# function to cart, löschen producte adding producte
+## mehrere branches für die einzelnen aufgaben
 
-# searchbar mit filter?
+## gitHub pages for deployment
+
+# html
+
+### for DOM manipulation,replacing html elements with js-- in progress--
+
+# css
+
+### for styling the page--cart icon in progress--
+
+# js:
+
+### prompt for username ->welcome id--passed--
+
+### function for cart, remove product adding product--passed--
+
+## fehlende functioen, nächste Aufgaben:
+
+### button onclick event--in progress--
+
+### searchbar mit filter?--in progress--
