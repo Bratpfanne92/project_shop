@@ -16,7 +16,9 @@
 
 # css
 
-### for styling the page--cart icon in progress--
+### for styling the page-responsivness
+
+### --cart icon in progress--
 
 # js:
 
