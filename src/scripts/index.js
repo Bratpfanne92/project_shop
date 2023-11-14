@@ -53,45 +53,37 @@ function ready() {
   }
 }
 //addToCartClicked function
-let productsImShop;
-let title;
-let price;
-let productsImShopImg;
 function addToCartClicked(e) {
   let button = e.target;
-  productsImShop = button.parentElement; //parent von button ist .product-box
-  console.log(productsImShop);
-  title = productsImShop.getElementsByClassName("product-title")[0].innerText;
-  console.log(title);
-  price = productsImShop.getElementsByClassName("price")[0].innerText;
-  productsImShopImg =
-    productsImShop.getElementsByClassName("product-img")[0].src; //src von img
+  let productsImShop = button.parentElement;
+  let title =
+    productsImShop.getElementsByClassName("product-title")[0].innerText;
+  let price = productsImShop.getElementsByClassName("price")[0].innerText;
+  let productsImShopImg =
+    productsImShop.getElementsByClassName("product-img")[0].src;
 
-  addProductToCart(title, price, productsImShopImg); //addProductToCart function-definieren soll unten
-  updateCartTotal(); //update cart total function,wenn add to cart button geklickt wird
+  addProductToCart(title, price, productsImShopImg);
+  updateCartTotal();
 }
 console.log(productsImShopImg);
 //addProductToCart function
-let cartBox = document.createElement("div"); //div erstellen für cart
-
-let cartItems = document.getElementsByClassName("cart-content")[0];
-
-let cartItemNames = cartItems.getElementsByClassName("cart-product-title");
-
 function addProductToCart(title, price, productsImShopImg) {
-  cartBox.classList.add("cart-box"); //class für div erstellen
+  let cartBox = document.createElement("div");
+  cartBox.classList.add("cart-box");
 
-  //wennn cart item name im cart ist, dann alert- diese artikel ist schon im warenkorb
+  let cartItems = document.getElementsByClassName("cart-content")[0];
+  let cartItemNames = cartItems.getElementsByClassName("cart-product-title");
+
+  // Überprüfen, ob das Produkt bereits im Warenkorb ist
   for (let i = 0; i < cartItemNames.length; i++) {
     if (cartItemNames[i].innerText === title) {
-      alert("Diese Artikel ist schon bereits im Warenkorb gelegt ");
+      alert("Dieses Produkt befindet sich bereits im Warenkorb.");
       return;
     }
   }
-}
 
-//cartBox html-erstellen- copy von html to js in cartBoxContent
-const cartBoxContent = ` <img
+  //cartBox html-erstellen- copy von html to js in cartBoxContent
+  const cartBoxContent = ` <img
 src="${productsImShopImg}"
 alt=""
 class="cart-img"
@@ -107,14 +99,17 @@ src="assets/icons8-trash-windows-11-outline-32.png"
 alt=""
 class="cart-remove"
 />`;
-cartBox.innerHTML = cartBoxContent; //cartBoxContent in cartBox in html einfügen
-cartItems.append(cartBox); //
-cartBox
-  .getElementsByClassName("cart-remove")[0]
-  .addEventListener("click", removeCartItem); //onclick removeCartItem function
-cartBox
-  .getElementsByClassName("cart-quantity")[0]
-  .addEventListener("change", quantityChanged);
+  cartBox.innerHTML = cartBoxContent;
+  cartItems.append(cartBox);
+
+  // Event-Listener für die neu erstellten Elemente hinzufügen
+  cartBox
+    .getElementsByClassName("cart-remove")[0]
+    .addEventListener("click", removeCartItem);
+  cartBox
+    .getElementsByClassName("cart-quantity")[0]
+    .addEventListener("change", quantityChanged);
+}
 //quantityChanged function
 function quantityChanged(e) {
   const input = e.target;
