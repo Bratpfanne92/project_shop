@@ -18,7 +18,7 @@
 
 ### prompt for username ->welcome id--passed--
 
-### function for cart, remove product adding product--passed--
+### function for cart: cart open-close, remove-adding products, total price --passed--
 
 ## fehlende functioen, nächste Aufgaben:
 
