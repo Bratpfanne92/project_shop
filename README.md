@@ -22,6 +22,6 @@
 
 ## fehlende functioen, nächste Aufgaben:
 
-### button onclick event--in progress--
+### button onclick event
 
-### searchbar mit filter?--in progress--
+### searchbar mit filter?
