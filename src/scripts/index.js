@@ -1,3 +1,20 @@
+// Warten bis Dokument geladen ist
+document.addEventListener("DOMContentLoaded", function () {
+  // Das html element id="user" auswählen
+  let userName = document.getElementById("user");
+
+  // username fragen
+  let enteredUserName = prompt("Bitte geben Sie Ihren Namen ein");
+
+  // Überprüfen, ob der Benutzer auf Abbrechen geklickt oder nichts eingegeben hat//.trim() leerzeichen entfernen-überprüfen ob leer ist
+  if (enteredUserName !== null && enteredUserName.trim() !== "") {
+    // username in das html Element einfügen
+    userName.innerHTML = enteredUserName;
+  } else {
+    //default name wenn nichts eingegebn wurde
+    userName.innerHTML = "Darth Niemand";
+  }
+});
 //navbar toggle
 const swMenu = document.querySelector(".sw-menu");
 const navMenu = document.querySelector(".nav-menu");
