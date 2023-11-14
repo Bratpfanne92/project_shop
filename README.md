@@ -2,6 +2,10 @@
 
 # shop project
 
+## VS Code für die Entwicklung
+
+## gitHub für version control
+
 ## mehrere branches für die einzelnen aufgaben
 
 ## gitHub pages for deployment
