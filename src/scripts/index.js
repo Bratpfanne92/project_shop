@@ -8,9 +8,9 @@ document.addEventListener("DOMContentLoaded", function () {
     // username abfragen
     enteredUserName = prompt("Bitte geben Sie Ihren Namen ein");
 
-    // Überprüfen, ob ein Benutzername eingegeben wurde
+    // Überprüfen, ob ein username eingegeben wurde
     if (enteredUserName !== null && enteredUserName.trim() !== "") {
-      // Benutzername in der Session Storage speichern wenn gültig
+      // username in der Session Storage speichern wenn gültig
       sessionStorage.setItem("userName", enteredUserName);
     } else {
       enteredUserName = "Darth Niemand";
