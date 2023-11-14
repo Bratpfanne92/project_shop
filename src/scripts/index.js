@@ -1,19 +1,27 @@
 // Warten bis Dokument geladen ist
 document.addEventListener("DOMContentLoaded", function () {
+  // Überprüfen, username  in der session strorage gespeichert ist
+  let enteredUserName = sessionStorage.getItem("userName");
+
+  // Wenn username noch nicht gespeichert ist, frage danach
+  if (!enteredUserName) {
+    // username abfragen
+    enteredUserName = prompt("Bitte geben Sie Ihren Namen ein");
+
+    // Überprüfen, ob ein Benutzername eingegeben wurde
+    if (enteredUserName !== null && enteredUserName.trim() !== "") {
+      // Benutzername in der Session Storage speichern wenn gültig
+      sessionStorage.setItem("userName", enteredUserName);
+    } else {
+      enteredUserName = "Darth Niemand";
+    }
+  }
+
   // Das html element id="user" auswählen
   let userName = document.getElementById("user");
 
-  // username fragen
-  let enteredUserName = prompt("Bitte geben Sie Ihren Namen ein");
-
-  // Überprüfen, ob der Benutzer auf Abbrechen geklickt oder nichts eingegeben hat//.trim() leerzeichen entfernen-überprüfen ob leer ist
-  if (enteredUserName !== null && enteredUserName.trim() !== "") {
-    // username in das html Element einfügen
-    userName.innerHTML = enteredUserName;
-  } else {
-    //default name wenn nichts eingegebn wurde
-    userName.innerHTML = "Darth Niemand";
-  }
+  // Den Benutzernamen im HTML-Element setzen
+  userName.innerHTML = enteredUserName;
 });
 //navbar toggle
 const swMenu = document.querySelector(".sw-menu");
@@ -143,10 +151,13 @@ function removeCartItem(e) {
   buttonClicked.parentElement.remove(); //parent von button löschen-hier .cart-box
   updateCartTotal(); //update cart total function,wenn gelöscht der element
 }
+
 //update cart total function
 function updateCartTotal() {
   let cartContent = document.getElementsByClassName("cart-content")[0];
   let cartBoxes = cartContent.getElementsByClassName("cart-box");
+  let total = 0;
+
   for (let i = 0; i < cartBoxes.length; i++) {
     let cartBox = cartBoxes[i];
     let cartProductPrice =
@@ -155,12 +166,12 @@ function updateCartTotal() {
       cartBox.getElementsByClassName("cart-quantity")[0];
     let price = parseFloat(cartProductPrice.innerText.replace("€", ""));
     let quantity = cartProductQuantity.value;
-    //anfangswert für total
-    let total = 0;
-    total = total + quantity * price;
-    //wenn hat decimal im price dann round to 2 decimal
-    total = Math.round(total * 100) / 100;
 
-    document.getElementsByClassName("total-price")[0].innerText = total + "€"; //oder total + €
+    total += quantity * price;
   }
+
+  // Wenn dezimal im Preis, dann auf 2 Dezimalstellen runden
+  total = Math.round(total * 100) / 100;
+
+  document.getElementsByClassName("total-price")[0].innerText = total + "€";
 }
