@@ -44,10 +44,11 @@ closeCart.onclick = () => {
   cart.classList.remove("active");
 };
 
-//cart working js-if document loaded dann ready() function sofort ausführen, sonst warten bis document geladen ist. Das ist wichtig, weil sonst die Funktionen nicht ausgeführt werden können, da die Elemente noch nicht geladen sind oder die Elemente noch nicht hinzugefügt wurden.zB.: Cart Elemente
+//cart working js-if document loaded dann ready() function sofort ausführen
 if (document.readyState == "loading") {
   document.addEventListener("DOMContentLoaded", ready);
 } else {
+  //wenn document nicht loading ist, dann ready() function  ausführen
   ready();
 }
 
