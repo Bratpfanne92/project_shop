@@ -53,47 +53,52 @@ function ready() {
   }
 }
 //addToCartClicked function
-let selectedProduct = {};
+let productsImShop;
+let title;
+let price;
+let productsImShopImg;
 function addToCartClicked(e) {
   let button = e.target;
-  let productsImShop = button.parentElement; //parent von button ist .product-box
-  let title =
-    productsImShop.getElementsByClassName("product-title")[0].innerText;
-
-  let price = productsImShop.getElementsByClassName("price")[0].innerText;
-  let productsImShopImg =
+  productsImShop = button.parentElement; //parent von button ist .product-box
+  console.log(productsImShop);
+  title = productsImShop.getElementsByClassName("product-title")[0].innerText;
+  console.log(title);
+  price = productsImShop.getElementsByClassName("price")[0].innerText;
+  productsImShopImg =
     productsImShop.getElementsByClassName("product-img")[0].src; //src von img
-  selectedProduct = {
-    title: title,
-    price: price,
-    productsImShopImg: productsImShopImg,
-  };
-  addProductToCart(selectedProduct); //addProductToCart function-definieren soll unten
+
+  addProductToCart(title, price, productsImShopImg); //addProductToCart function-definieren soll unten
   updateCartTotal(); //update cart total function,wenn add to cart button geklickt wird
 }
-
+console.log(productsImShopImg);
 //addProductToCart function
+let cartBox = document.createElement("div"); //div erstellen für cart
+
+let cartItems = document.getElementsByClassName("cart-content")[0];
+
+let cartItemNames = cartItems.getElementsByClassName("cart-product-title");
+
 function addProductToCart(title, price, productsImShopImg) {
-  let cartBox = document.createElement("div"); //div erstellen für cart
   cartBox.classList.add("cart-box"); //class für div erstellen
-  let cartItems = document.getElementsByClassName("cart-content")[0];
-  let cartItemNames = cartItems.getElementsByClassName("cart-product-title");
+
   //wennn cart item name im cart ist, dann alert- diese artikel ist schon im warenkorb
   for (let i = 0; i < cartItemNames.length; i++) {
-    alert("Diese Artikel ist schon bereits im Warenkorb gelegt ");
-    return; //wennn cart item name im cart ist, dann return und nichts machen
+    if (cartItemNames[i].innerText === title) {
+      alert("Diese Artikel ist schon bereits im Warenkorb gelegt ");
+      return;
+    }
   }
 }
 
 //cartBox html-erstellen- copy von html to js in cartBoxContent
 const cartBoxContent = ` <img
-src="${selectedProduct.productsImShopImg}"
+src="${productsImShopImg}"
 alt=""
 class="cart-img"
 />
 <div class="detail-box">
-<div class="cart-product-title">${selectedProduct.title}</div>
-<div class="cart-product-price">${selectedProduct.price}</div>
+<div class="cart-product-title">${title}</div>
+<div class="cart-product-price">${price}</div>
 <input type="number" value="1" class="cart-quantity" />
 </div>
 <!-- remove cart -trash button-->
