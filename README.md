@@ -1,6 +1,6 @@
 # project_shop
 
-# shop project
+# SW shop project
 
 ## VS Code für die Entwicklung
 
