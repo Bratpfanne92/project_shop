@@ -14,6 +14,8 @@
 
 ### for DOM manipulation,replacing html elements with js-- in progress--
 
+### Contact Page -- in progress--
+
 # css
 
 ### for styling the page-responsivness
